@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+
+        .main-content {
+            padding-top: 80px;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #ccc;
+        }
+
+        /* Dashboard Styling */
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dashboard-container {
+            padding: 30px;
+        }
+
+        .card {
+            width: 100%;
+            height: auto;
+            background-color: #fff;
+            border: 2px solid #ffedd5;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        .btn-primary {
+            background-color: #ff7300;
+            border: none;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #e65c00;
+        }
+
+        .btn-disabled {
+            background-color: #cccccc;
+            border: none;
+            color: white;
+            cursor: not-allowed;
+        }
+        
+        .upload-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #ff7300;
+            border: none;
+            border-radius: 50%;
+            font-size: 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .upload-btn:hover {
+            background-color: #e65c00;
+        }
+
+        .username {
+            color: #ff7300;
+            font-weight: bold;
+        }
+
+        #topname {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a id="topname" class="navbar-brand fw-bold" href="/">Equipment Rental</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/givenitems">Your Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/renteditems">Rented Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aboutus">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/requests">Issued items</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <h2 class="text-center mb-4">Welcome, <span class="username"><%= user.username %></span>!</h2>
+
+        <div class="row">
+            <% items.forEach(item => { %>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="<%= item.image %>" class="card-img-top" alt="Item Image">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-primary"><%= item.name %></h5>
+                            
+                            <p><strong>Price Per Hour:</strong> ₹<%= item.price %></p>
+                            <p><strong>Rental Duration:</strong> <%= item.duration %> hours</p>
+                            <p><strong>Owner:</strong> <%= item.owner.username %></p>
+
+                            <div class="mt-auto">
+                                <% if (String(item.owner._id) === String(user._id)) { %>
+                                    <button class="btn btn-disabled w-100 mb-2" disabled>Owned by You</button>
+                                <% } else { %>
+                                    <a href="/items/<%= item._id %>" class="btn btn-primary w-100 mb-2">View Details</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <!-- Upload Button -->
+    <a href="/items/upload" class="upload-btn">+</a>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <p>&copy; 2025 Equipment Rental Pvt. Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

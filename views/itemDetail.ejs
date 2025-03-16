@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Page Styling */
+        body {
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Centered Layout */
+        .item-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 1000px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            
+        }
+
+        /* Image Styling */
+        .item-container img {
+            width: 300px;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        /* Details on Right */
+        .item-details {
+            flex: 1;
+            text-align: left;
+        }
+
+        /* Item Name */
+        .item-name {
+            color: orange;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        /* Description */
+        .item-description {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* Price */
+        .item-price {
+            font-size: 20px;
+            color: #d9534f;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Rent Button Styling (Smaller Size) */
+        .rent-btn {
+            display: inline-block;
+            background-color: orange;
+            color: white;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+            border: none;
+            font-weight: bold;
+        }
+
+        .rent-btn:hover {
+            background-color: darkorange;
+        }
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+
+        .main-content {
+            padding-top: 80px;
+        }
+        #topname{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a id="topname" class="navbar-brand fw-bold" href="/">Equipment Rental</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/givenitems">Your Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/renteditems">Rented Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aboutus">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/requests">Issued items</a></li>
+
+                    <li class="nav-item"><a class="nav-link text-danger" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content (Centered) -->
+    <div class="item-container">
+        <img src="<%= item.image %>" alt="<%= item.name %>">
+        <div class="item-details">
+            <h2 class="item-name"><%= item.name %></h2>
+            <p class="item-description"><strong>Description:</strong> <%= item.description %></p>
+            <p class="item-price"><strong>Price:</strong> ₹<%= item.price %> / Hour</p>
+            <a href="/rent/<%= item._id %>" class="rent-btn">Rent Now</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

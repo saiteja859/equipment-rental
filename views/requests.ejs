@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Requests</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container1 {
+            margin-top: 30px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            width: 300px;
+        }
+        .card:hover {
+            transform: scale(1.02);
+        }
+        .btn-approve {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-reject {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #rent{
+            color: orange;
+        }
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+        .main-content {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a id="topname" class="navbar-brand fw-bold" href="/">Equipment Rental</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/givenitems">Your Items</a></li>
+                <li class="nav-item"><a class="nav-link" href="/renteditems">Rented Items</a></li>
+                <li class="nav-item"><a class="nav-link" href="/aboutus">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link text-danger" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="main-content">
+<div class="container1">
+    <h2 class="text-center" id="rent">Issued Items</h2>
+    <div class="row">
+        <% if (requests.length > 0) { %>
+            <% requests.forEach(request => { %>
+                <div class="col-md-6 request-card" id="request-<%= request._id %>">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= request.productName %></h5>
+                            <p><strong>Rented by:</strong> <%= request.fullName %></p>
+                            <p><strong>Phone:</strong> <%= request.phone %></p>
+                            <p><strong>Address:</strong> <%= request.address %></p>
+                            <p><strong>Rental Date:</strong> <%= request.rentalDate %></p>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="text-center">No items at the moment.</p>
+        <% } %>
+    </div>
+</div>
+</div>
+<script>
+    function approveRequest(requestId, button) {
+        fetch(`/requests/approve/${requestId}`, { method: "POST" })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                button.textContent = "Approved"; // ✅ Change button text
+                button.disabled = true; // ✅ Disable button
+                button.style.backgroundColor = "gray"; // ✅ Change color
+                document.getElementById("status-" + requestId).style.display = "block"; // ✅ Show "Approved"
+            } else {
+                alert("Error: " + data.error);
+            }
+        })
+        .catch(error => console.error("Approval Error:", error));
+    }
+
+    function rejectRequest(requestId) {
+        fetch(`/requests/reject/${requestId}`, { method: "POST" })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                document.getElementById("request-" + requestId).remove(); // ✅ Remove request from UI
+            } else {
+                alert("Error: " + data.error);
+            }
+        })
+        .catch(error => console.error("Rejection Error:", error));
+    }
+</script>
+
+</body>
+</html>

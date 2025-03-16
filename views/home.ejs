@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Rental</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fixed Navbar */
+        .navbar {
+            background-color: #fff;
+            border-bottom: 1px solid black;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 20px;
+        }
+
+        .navbar .logo img {
+            height: 40px; /* Adjust logo size */
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo a {
+            text-decoration: none;
+        }
+
+        .container-home {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            padding: 100px 50px 50px;
+        }
+
+        .left-content {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .welcome-text {
+            font-size: 3rem;
+            font-weight: bold;
+            color: orange;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .create-profile {
+            margin-top: 20px;
+        }
+
+        .btn-create {
+            background-color: orange;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-create:hover {
+            background-color: darkorange;
+        }
+
+        /* Illustration */
+        .illustration {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .illustration img {
+            max-width: 90%;
+            height: auto;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: orange;
+            color: white;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        .navbar-nav .nav-item {
+    margin-right: 20px; /* Adjust spacing */
+}
+/* #topname{
+    color: orange;
+} */
+.colored-text {
+    color: orange; /* Change this to your desired color */
+}
+
+                
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container d-flex align-items-center">
+            <!-- Logo on the left -->
+            <div class="logo">
+                <a href="/">
+                    <a id="topname" class="navbar-brand fw-bold" href="#"><span class="colored-text">Equipment Rental</a>
+
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/aboutus">About us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/signup">Signup</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <div class="container-home">
+        <div class="left-content">
+            <h1 class="welcome-text">
+                <span id="typing-effect"></span>
+            </h1>
+            <p class="description">
+                Rent high-quality equipment effortlessly! Whether you need tools, gadgets, or machinery, our platform connects you with reliable renters. Our mission is to make renting easy, affordable, and accessible for everyone. Say goodbye to expensive purchases and enjoy seamless renting with verified users and secure transactions.
+            </p>
+            <div class="create-profile">
+                <a href="/signup" class="btn-create">Create Profile</a>
+            </div>
+        </div>
+
+        <!-- Illustration -->
+        <div class="illustration">
+            <img src="DeWatermark.ai_1741615371727.PNG" alt="Equipment Rental Illustration">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- <footer class="footer">
+        &copy; 2025 Equipment Rental Pvt. Ltd. All Rights Reserved.
+    </footer> -->
+
+    <script>
+        var typed = new Typed("#typing-effect", {
+            strings: ["Welcome to Equipment Rental!", "Find, Rent, and Explore!"],
+            typeSpeed: 80,
+            backSpeed: 50,
+            loop: true
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

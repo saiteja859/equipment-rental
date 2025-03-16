@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+       
+
+       body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .card {
+            border: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.02);
+        }
+        .container1 {
+            margin-top: 80px;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+
+        .main-content {
+            padding-top: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px); /* Adjust for navbar height */
+        }
+        #topname{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a id="topname" class="navbar-brand fw-bold" href="/">Equipment Rental</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/givenitems">Your Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/requests">Issued items</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container1">
+        <h2 class="text-center text-primary">Your Rented Items</h2>
+        <div class="row">
+            <% if (rentedItems.length > 0) { %>
+                <% rentedItems.forEach(rental => { %>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= rental.productName %></h5>
+                                <p><strong>Rented on:</strong> <%= rental.rentalDate %></p>
+                                <p><strong>Address:</strong> <%= rental.address %></p>
+                                <p><strong>Phone:</strong> <%= rental.phone %></p>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="text-center">You haven't rented any items yet.</p>
+            <% } %>
+        </div>
+    </div>
+    
+
+</body>
+</html>

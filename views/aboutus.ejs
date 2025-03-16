@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            max-width: 800px;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: white;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-title {
+            color: #ff6600;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .card-text {
+            font-size: 18px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+
+        .main-content {
+            padding-top: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px); /* Adjust for navbar height */
+        }
+        #topname{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a id="topname" class="navbar-brand fw-bold" href="/">Equipment Rental</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/givenitems">Your Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/renteditems">Rented Items</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/requests">Issued items</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container main-content">
+        <div class="card">
+            <h2 class="card-title">About Us</h2>
+            <p class="card-text">
+                Welcome to <b> Equipment Rental!</b> We make renting high-quality tools, gadgets, and machinery <b>easier than ever</b>. 
+                Whether you're a business owner, freelancer, or an individual looking for <b>trusted</b> equipment, we’ve got you covered!
+            </p>
+            <p class="card-text">
+                Our mission is to <b>simplify rentals</b>, ensuring you get what you need, <b>when you need it</b>, without the hassle of ownership. 
+                With a user-friendly interface and <b>verified users</b>, we make transactions smooth and secure.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
