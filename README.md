@@ -38,27 +38,19 @@
 git clone https://github.com/yourusername/equipment-rental.git
 cd equipment-rental
 
-
-2. Install dependencies
-sh
-Copy
-Edit
+## 2. Install dependencies
 npm install
-3. Set up environment variables
-Create a .env file in the root directory with the following:
 
-env
-Copy
-Edit
 MONGO_URI=your_mongo_connection_string
+
 SESSION_SECRET=your_secret_key
 PORT=3000
-4. Run the app
-sh
-Copy
-Edit
 npm start
-The app will run at: http://localhost:3000
+
+---
+
+
+
 
 
 
