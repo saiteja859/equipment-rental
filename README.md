@@ -57,6 +57,10 @@ npm start
 📷 Screenshots
 ![image](https://github.com/user-attachments/assets/d518a392-a60d-487e-88d1-76752ce127da)
 ![image](https://github.com/user-attachments/assets/ca192b65-4119-4581-982d-5f3dd1228f38)
+![image](https://github.com/user-attachments/assets/6ac54a64-b278-4832-81e2-42019d8d5ff4)
+![image](https://github.com/user-attachments/assets/754628e2-3916-4321-9aab-48473c059b88)
+
+
 
 
 
